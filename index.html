@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0-rc5/angular-material.min.css">
+    <title>Genecards</title>
+</head>
+<body ng-app="Genecards" ng-cloak>
+
+<div ng-controller="AppCtrl as appCtrl" layout="column" layout-fill>
+    <section layout="row" layout-fill flex>
+        <md-sidenav class="md-sidenav-left md-whiteframe-z2"
+                    md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+            <div ng-controller="LeftCtrl as leftCtrl" layout="column" flex layout-fill>
+                <md-content>
+                    <section>
+                        <md-subheader>
+                            <md-input-container layout-fill flex>
+                                <label for="search">Search</label>
+                                <input id="search" type="text" ng-model="leftCtrl.search" md-autofocus>
+                            </md-input-container>
+                        </md-subheader>
+                        <md-list>
+                            <md-list-item ng-repeat="geneKey in leftCtrl.geneKeys | filter: leftCtrl.search" ng-click="appCtrl.showContent(geneKey)">
+                                {{geneKey}}
+                            </md-list-item>
+                        </md-list>
+                    </section>
+                </md-content>
+            </div>
+        </md-sidenav>
+            <iframe ng-src="{{appCtrl.url}}" layout-fill flex></iframe>
+    </section>
+</div>
+
+<!-- Angular Material requires Angular.js Libraries -->
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+
+<!-- Angular Material Library -->
+<script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0-rc7/angular-material.min.js"></script>
+
+<script type="text/javascript" src="js/data.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+
+</body>
+</html>
